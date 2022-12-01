@@ -254,6 +254,14 @@
   }
 }
 
+- (void)screen:(SEGScreenPayload *)payload
+{
+  if (payload.name) {
+    [[Appboy sharedInstance] logCustomEvent:payload.name withProperties:payload.properties];
+    SEGLog(@"[[Appboy sharedInstance] logCustomEvent: withProperties:]");
+  }
+}
+
 + (NSDecimalNumber *)extractRevenue:(NSDictionary *)dictionary withKey:(NSString *)revenueKey
 {
   id revenueProperty = dictionary[revenueKey];
